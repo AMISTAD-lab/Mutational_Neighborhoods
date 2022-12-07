@@ -217,6 +217,12 @@ def find_zero(configuration):
     
     return (loc_space_i, loc_space_j)
 
+
+def get_tuple_configuration(current_configuration):
+    return tuple(get_1D_configuration(current_configuration))
+
+
+
 def best_f_score(initial_configuration = None, side_length = 3, depth = 50, break_at_end = True, plot=True, allow_repeats=False):
     # We are following the path of best f-score
     current_configuration = get_configuration(random=True, side_length=side_length)
@@ -235,7 +241,7 @@ def best_f_score(initial_configuration = None, side_length = 3, depth = 50, brea
         dj = [0, -1, 1, 0]
         temp_f_scores_and_configuration = []
         best_f = 0
-        visited[(loc_space_i, loc_space_j)] = 1
+        visited[get_tuple_configuration(current_configuration)] = 1
 
         new_i = -1
         new_j = -1
@@ -243,13 +249,13 @@ def best_f_score(initial_configuration = None, side_length = 3, depth = 50, brea
             new_i = loc_space_i + di[i]
             new_j = loc_space_j + dj[i]
 
-            if(not allow_repeats): 
-                if((new_i, new_j) in visited): continue
 
             if(new_i < 0 or new_j < 0 or new_i >= len(current_configuration) or new_j >= len(current_configuration)): continue
             temp_configuration = copy.deepcopy(current_configuration)
             temp_configuration[loc_space_i][loc_space_j] = temp_configuration[new_i][new_j]
             temp_configuration[new_i][new_j] = 0
+            if(not allow_repeats): 
+                if(get_tuple_configuration(temp_configuration) in visited): continue
             new_f = f(temp_configuration, desired_configuration)
             temp_f_scores_and_configuration += [(new_f, temp_configuration, new_i, new_j)]
             if(new_f > best_f): best_f = new_f
@@ -387,4 +393,4 @@ solvable_configuration = [[6, 13, 7, 10],
 print(is_solvable(solvable_configuration))
 
 
-get_mult_puzzle_results(20)
+get_mult_puzzle_results(50)
