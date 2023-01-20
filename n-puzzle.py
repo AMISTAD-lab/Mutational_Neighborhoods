@@ -393,4 +393,4 @@ solvable_configuration = [[6, 13, 7, 10],
 print(is_solvable(solvable_configuration))
 
 
-get_mult_puzzle_results(50)
+get_mult_puzzle_results(500)
