@@ -1,6 +1,6 @@
 """Imported from github@bellerb RubiksCube_Solver/cube.py"""
 
-
+from collections import Counter
 from random import randint, choice
 
 class RubiksCube:
@@ -223,3 +223,88 @@ class RubiksCube:
         else:
             print(f'ERROR - desired column outside of rubiks cube range. Please select a column between 0-{len(self.cube[0])-1}')
             return
+        
+
+    def get_f_score(self):
+        """We will define f_score, by getting the main color of each side and then calculating a fraction"""
+        elems = ['w', 'r', 'b', 'g', 'y', 'o']
+        counter_per_column = []
+        
+        for column in self.cube:
+            column_count = Counter()
+            for row in column:
+                column_count += Counter(row)
+            #we add one color of each thing to make sure each element is at least 1
+            column_count += Counter(elems)
+            counter_per_column += [column_count.most_common()]
+                       
+        for i in range(4,-1,-1):
+            counter_per_column = sorted(counter_per_column, key = lambda x:x[i][1], reverse=True)
+        
+        used = [False, False, False, False, False, False]
+        fscore = [0,0,0,0,0,0]
+        for lis in counter_per_column:
+            i = 0
+            while(True):
+                index = elems.index(lis[i][0])
+                if(not used[index]):
+                    used[index] = True
+                    fscore[index] = (lis[i][1]-1)/9.0
+                    break
+                else:
+                    i+=1
+        return (sum(fscore)/6.0)
+    
+
+    def do_move(self, i):   
+        #each move is given a number from 0 - 17, and the inverse is 17-i where i is the move
+        if(i == 0):
+            self.side_twist(0,0)
+        elif(i == 17):
+            self.side_twist(0,1)
+        elif(i == 1):
+            self.side_twist(1,0)
+        elif(i == 16):
+            self.side_twist(1,1)
+        elif(i == 2):
+            self.side_twist(2,0)
+        elif(i == 15):
+            self.side_twist(2,1)
+        elif(i == 3):
+            self.vertical_twist(0,0)
+        elif(i == 14):
+            self.vertical_twist(0,1)
+        elif(i == 4):
+            self.vertical_twist(1,0)
+        elif(i == 13):
+            self.vertical_twist(1,1)
+        elif(i == 5):
+            self.vertical_twist(2,0)
+        elif(i == 12):
+            self.vertical_twist(2,1)
+        elif(i == 6):
+            self.horizontal_twist(0, 0)
+        elif(i == 11):
+            self.horizontal_twist(0,1)
+        elif(i == 7):
+            self.horizontal_twist(1, 0)
+        elif(i == 10):
+            self.horizontal_twist(1,1)
+        elif(i == 8):
+            self.horizontal_twist(2, 0)
+        elif(i == 9):
+            self.horizontal_twist(2,1)
+        else:
+            pass 
+        
+    
+    def get_f_score_per_rotation(self):
+        """gives an array from 0-17, depting move and the f_score for each move"""
+        f_scores = [0]*18
+        print(f_scores)
+        for i in range(18):
+            self.do_move(i)
+            f_scores[i] = self.get_f_score()
+            self.do_move(17-i)
+        return f_scores
+
