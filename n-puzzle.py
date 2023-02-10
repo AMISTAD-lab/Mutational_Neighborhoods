@@ -223,7 +223,7 @@ def get_tuple_configuration(current_configuration):
 
 
 
-def best_f_score(initial_configuration = None, side_length = 3, depth = 50, break_at_end = True, plot=True, allow_repeats=False):
+def get_best_f_score_path(initial_configuration = None, side_length = 3, depth = 50, break_at_end = True, plot=True, allow_repeats=False):
     # We are following the path of best f-score
     current_configuration = get_configuration(random=True, side_length=side_length)
     if(initial_configuration): current_configuration = initial_configuration
@@ -294,7 +294,7 @@ def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits
             initial_configuration = get_high_f_score_configuration_using_original_transformer(random.randint(0,20), desired_configuration)
             #get_solvable_configuration(random.randint(0,20), desired_configuration, solvable=True)
             initial_f = f(initial_configuration, desired_configuration)
-            f_scores = best_f_score(initial_configuration, side_length = 3, depth = depth, break_at_end = False, plot=False)
+            f_scores = get_best_f_score_path(initial_configuration, side_length = 3, depth = depth, break_at_end = False, plot=False)
             index = min(num_splits - 1, int(initial_f/size_of_split))
             print(index)
             if(results[index] == []):

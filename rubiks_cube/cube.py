@@ -256,6 +256,11 @@ class RubiksCube:
         return (sum(fscore)/6.0)
     
 
+    def get_f_score_based_on_center():
+        """This function should allow the rubiks cube to determine how filled a side is by the center square"""
+        pass
+    
+
     def do_move(self, i):   
         #each move is given a number from 0 - 17, and the inverse is 17-i where i is the move
         if(i == 0):
@@ -296,7 +301,8 @@ class RubiksCube:
             self.horizontal_twist(2,1)
         else:
             pass 
-        
+    def do_inverse_move(self,i):
+        self.do_move(17-i)
     
     def get_f_score_per_rotation(self):
         """gives an array from 0-17, depting move and the f_score for each move"""
