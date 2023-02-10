@@ -1,4 +1,4 @@
-from rubiks_cube import cube
+import cube
 import numpy as np
 import matplotlib.pyplot as plt
 import random
