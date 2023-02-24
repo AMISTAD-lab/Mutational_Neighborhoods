@@ -11,7 +11,7 @@ def f(current: str, target: str):
 
 
 def shortest_chain_len(start: str, target: str, D: Set[str]) -> int:
-    f_score = []
+    f_score = [f(start, target)]
     temp_score = []
 
     if start == target:
@@ -44,14 +44,17 @@ def shortest_chain_len(start: str, target: str, D: Set[str]) -> int:
     # Perform BFS and push (word, distance)
     q = [(start, 1)]
     visited = {start: 1}
- 
+    
+    i  = 0
     # Traverse until queue is empty
-    while q:
+    while (q or i < 30):
+        i += 1
         word, dist = q.pop(0)
- 
+
         # If target word is found
         if word == target:
-            return dist
+            print("Distance is ", dist)
+            break
  
         # Finding intermediate words for the word in front of queue
         for i in range(len(word)):
@@ -66,8 +69,9 @@ def shortest_chain_len(start: str, target: str, D: Set[str]) -> int:
 
                 # Add value to f_score array 
                 temp_score += [f(vect[k], target)]
-
-            #print(temp_score)
+                #print("intermediate word", vect[k])
+                #print(target)
+                #print(temp_score)
             f_score += [max(temp_score)]
             #print(f_score)
     #print(f_score)
@@ -75,6 +79,7 @@ def shortest_chain_len(start: str, target: str, D: Set[str]) -> int:
     xs = [x for x in range(len(f_score))]
 
     plt.plot(xs, f_score)
+    plt.savefig("plot1.png")
     plt.show()
     plt.close()
 
@@ -83,5 +88,5 @@ def shortest_chain_len(start: str, target: str, D: Set[str]) -> int:
 # Make dictionary
 D = get_english_words_set(['web2'], lower=True)
 start = "cart"
-target = "cant"
+target = "salt"
 print(f"Length of shortest chain is: {shortest_chain_len(start, target, D)}")
