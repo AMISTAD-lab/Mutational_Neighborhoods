@@ -256,9 +256,21 @@ class RubiksCube:
         return (sum(fscore)/6.0)
     
 
-    def get_f_score_based_on_center():
+    def get_f_score_based_on_center(self):
         """This function should allow the rubiks cube to determine how filled a side is by the center square"""
-        pass
+        elems = ['w', 'r', 'b', 'g', 'y', 'o']
+        
+        f_score_per_column = []
+        for column in self.cube:
+            center = column[1][1]
+            num_matches = 0
+            for row in column:
+                for elem in row:
+                    if(elem == center): num_matches += 1
+            f_score_per_column += [num_matches]
+     
+
+        return (sum(f_score_per_column) / (9 * 6))
     
 
     def do_move(self, i):   

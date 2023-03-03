@@ -7,9 +7,9 @@ import random
 def test():
     rubiks_cube = cube.RubiksCube()
     print(rubiks_cube.stringify())
-    print(rubiks_cube.get_f_score())
+    print(rubiks_cube.get_f_score_based_on_center())
     rubiks_cube.shuffle()
-    print(rubiks_cube.get_f_score())
+    print(rubiks_cube.get_f_score_based_on_center())
 
     rubiks_cube2 = cube.RubiksCube(state = rubiks_cube.stringify())
     print(rubiks_cube2.stringify() == rubiks_cube.stringify())
@@ -68,7 +68,7 @@ def get_high_f_score_cube(num_swaps):
         configuration.do_move(random.randint(0,17))
     return configuration
     
-def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 5, depth = 20, plot=True):
+def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth = 20, plot=True, use_original_f_score=True, allow_repeats=False):
     #if the number of splits are 5, we want to go from 0-0.2, 0.2-0.4, 0.4-0.6, 0.6-0.8, 0.8-1.0
     results = [[] for i in range(num_splits)]
     num_in_each = [0 for i in range(num_splits)]
@@ -83,10 +83,11 @@ def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 5, depth 
         else:
             initial_configuration = get_high_f_score_cube(random.randint(0,20))
     
-        initial_f = initial_configuration.get_f_score()
-        f_scores = get_best_f_score_path(initial_configuration=initial_configuration,  depth = depth, break_at_end = False)
+        
+        if(use_original_f_score): initial_f = initial_configuration.get_f_score_based_on_center()
+        else: initial_f = initial_configuration.get_f_score()
+        f_scores = get_best_f_score_path(initial_configuration=initial_configuration,  depth = depth, break_at_end = False, allow_repeats=allow_repeats)
         index = min(num_splits - 1, int(initial_f/size_of_split))
-        print(index)
         if(results[index] == []):
             results[index] = f_scores
         else:
@@ -95,6 +96,9 @@ def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 5, depth 
     
     
     if(plot):
+        plt.figure()
+        variance_of_variances = []
+        variance_of_variances_x = []
         for i in range(num_splits):
             if(num_in_each[i] == 0): continue
             data = results[i]
@@ -103,13 +107,28 @@ def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 5, depth 
             print(data)
             label = round(i*size_of_split,2)
             plt.plot(data, label=str(label))
+            variance_of_variances += [np.std(data)]
+            variance_of_variances_x += [label]
+        
+        
+        print("Variance of variances is \n")
+        print(variance_of_variances)
         #plt.show()
         plt.legend()
         plt.xlabel('Number of iterations')
         plt.ylabel('F-score')
         #plt.title("Random Transformator: Solvable Puzzles")
-        plt.title("Rubiks Cube: Best-F-score - Repeats in Configurations")
+        plt.title("Rubiks Cube: Original-F-score - No Repeats in Configurations")
         plt.savefig('./plot0.png') 
+
+        #now we will plot the variance over the trap size and see how much it differs
+        plt.figure()
+        plt.xlabel('Initial F-score of Traps')
+        plt.ylabel('Standard Deviation')
+        plt.scatter(variance_of_variances_x, variance_of_variances)
+        plt.title("Rubiks Cube: Variance over Original F-score - Repeats in Confugurations")
+        plt.savefig('./plot0_std.png')
+
 
 
 def run():
