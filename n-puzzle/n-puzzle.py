@@ -91,7 +91,7 @@ def is_solvable(configuration):
         return (inv_count % 2 == 0)
     else: #if N is even   
     
-        pos_x, pos_y = find_zero(configuration);
+        pos_x, pos_y = find_zero(configuration)
         pos_x = N - pos_x
         if (pos_x % 2 == 1):
             return (inv_count % 2 == 0)
@@ -104,10 +104,13 @@ def is_solvable(configuration):
 def get_solvable_configuration(num_swaps, desired_configuration, solvable=True):
 
     new_configuration = get_high_f_score_configuration_using_random_transformer(num_swaps, desired_configuration)
+    i =0
     while(True):
         if(is_solvable(new_configuration) == solvable): break
         new_configuration = get_high_f_score_configuration_using_random_transformer(num_swaps, desired_configuration)
-        print("repeat")
+        i +=1
+        if (i % 2000 == 0):
+            print(str(i) + "we are tryong to get " + str(solvable) + " configuration\n")
     
     return new_configuration
 
@@ -280,7 +283,7 @@ def get_best_f_score_path(initial_configuration = None, side_length = 3, depth =
 
 
     
-def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits = 5, depth = 20, plot=True):
+def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits = 20, depth = 20, plot=True, allow_repeats=False, use_solvable_puzzles=True):
     #if the number of splits are 5, we want to go from 0-0.2, 0.2-0.4, 0.4-0.6, 0.6-0.8, 0.8-1.0
     results = [[] for i in range(num_splits)]
     num_in_each = [0 for i in range(num_splits)]
@@ -289,44 +292,51 @@ def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits
     size_of_split = 1.0/num_splits
     initial_configuration = get_configuration(random=True, side_length= 3)
     desired_configuration = get_configuration(random=False, side_length=3)
+    number_of_configurations_that_gained_higher_fscore = 0
     for i in range(num_traps):
         if(artificial_start_traps):
-            initial_configuration = get_high_f_score_configuration_using_original_transformer(random.randint(0,20), desired_configuration)
-            #get_solvable_configuration(random.randint(0,20), desired_configuration, solvable=True)
+            #initial_configuration = get_high_f_score_configuration_using_original_transformer(random.randint(0,20), desired_configuration)
+            initial_configuration = get_solvable_configuration(random.randint(10,30), desired_configuration, solvable=use_solvable_puzzles)
             initial_f = f(initial_configuration, desired_configuration)
-            f_scores = get_best_f_score_path(initial_configuration, side_length = 3, depth = depth, break_at_end = False, plot=False)
+            f_scores = get_best_f_score_path(initial_configuration, side_length = 3, depth = depth, 
+                                             break_at_end = False, plot=False, allow_repeats=allow_repeats)
+            if(f_scores[-1] >= initial_f or f_scores[-2] >= initial_f): number_of_configurations_that_gained_higher_fscore+=1
             index = min(num_splits - 1, int(initial_f/size_of_split))
-            print(index)
             if(results[index] == []):
                 results[index] = f_scores
             else:
                 results[index] = [results[index][i] + f_scores[i] for i in range(depth)]
             num_in_each[index] += 1
     
+    if plot: plt.figure()
+    variance_of_variances = []
+    variance_of_variances_x = []
+    for i in range(num_splits):
+        if(num_in_each[i] == 0): continue
+        data = results[i]
+        data = [data[j]/num_in_each[i] for j in range(depth)]
+        label = round(i*size_of_split,2)
+        variance_of_variances += [np.std(data)]
+        variance_of_variances_x += [label]
+        if plot: plt.plot(data, label=str(label))
     
-    if(plot):
-        """for i in range(num_splits):
-            if((num_in_each[i])== 0):
-                continue
-            print("index",i)
-            data = results[i]
-            density = gaussian_kde(data)
-            x = np.linspace(-5,5,200)
-            density.covariance_factor = lambda : 0.5
-            density._compute_covariance()
-            y = density(x)
-            print(max(y))
-            label = round(i*size_of_split,2)
-            print(label)
-            plt.plot(x,y, label = str(label))"""
-        for i in range(num_splits):
-            if(num_in_each[i] == 0): continue
-            data = results[i]
-            print("before", data)
-            data = [data[j]/num_in_each[i] for j in range(depth)]
-            print(data)
-            label = round(i*size_of_split,2)
-            plt.plot(data, label=str(label))
+    file = open("n-puzzle.txt", "a")
+    file.write("---------------------------------------------\n")
+    file.write("The number of cubes is " + str(num_traps) + "\n")
+    file.write("Getting high cubes by going bacwkwards from solved configuration " + str(artificial_start_traps) + "\n")
+    file.write("The number of splits is " + str(num_splits) + "\n")
+    file.write("Solvable Puzzles " + str(use_solvable_puzzles) + "\n")
+    file.write("Are we allowing repeats: " + str(allow_repeats) + "\n")
+    std_of_std = np.std(variance_of_variances)
+    file.write("The standard deviation of standard deviations is " + str(std_of_std) + "\n")
+    average_std = np.average(variance_of_variances)
+    file.write("The average standard deviation is " + str(average_std) + "\n")
+    percent_gained_higher_f = (number_of_configurations_that_gained_higher_fscore/num_traps) * 100
+    file.write("The number of configurations that gained a higher f_score: " + str(percent_gained_higher_f) + "% \n")
+    file.write("")
+    file.close()
+
+    if plot:
         #plt.show()
         plt.legend()
         plt.xlabel('Number of iterations')
@@ -334,6 +344,14 @@ def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits
         #plt.title("Random Transformator: Solvable Puzzles")
         plt.title("Original Transformator: No Repeats in Configurations")
         plt.savefig('./plot5.png') 
+
+
+def run():
+    arr = [False, False, True, True]
+    arr2 = [False, True, False, True]
+    for i in range(4):
+        get_mult_puzzle_results(2000, artificial_start_traps=True, allow_repeats=arr[i], use_solvable_puzzles=arr2[i], plot=False)
+        print("Done")
 
 
 
@@ -379,18 +397,17 @@ def two_gram_recursive(initial_configuration = None):
 #best_f_score()
 
 
-not_solvable_configuration = [[3, 9, 1, 15],
-                    [14, 11, 4, 6],
-                    [13, 0, 10, 12],
-                    [2, 7, 8, 5]]
-print(is_solvable(not_solvable_configuration))
+# not_solvable_configuration = [[3, 9, 1, 15],
+#                     [14, 11, 4, 6],
+#                     [13, 0, 10, 12],
+#                     [2, 7, 8, 5]]
+# print(is_solvable(not_solvable_configuration))
 
-solvable_configuration = [[6, 13, 7, 10],
-                    [8, 9, 11, 0],
-                    [15, 2, 12, 5],
-                    [14, 3, 1, 4]]
+# solvable_configuration = [[6, 13, 7, 10],
+#                     [8, 9, 11, 0],
+#                     [15, 2, 12, 5],
+#                     [14, 3, 1, 4]]
 
-print(is_solvable(solvable_configuration))
+# print(is_solvable(solvable_configuration))
 
-
-get_mult_puzzle_results(500)
+run()

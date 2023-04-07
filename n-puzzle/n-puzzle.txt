@@ -1,0 +1,36 @@
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles False
+Are we allowing repeats: False
+The standard deviation of standard deviations is 0.03769669455011011
+The average standard deviation is 0.06341168449694085
+The number of configurations that gained a higher f_score: 88.85% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: False
+The standard deviation of standard deviations is 0.034830954756216795
+The average standard deviation is 0.056839610105280845
+The number of configurations that gained a higher f_score: 89.95% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles False
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.012021205230903434
+The average standard deviation is 0.04041545074704686
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.013677363681482813
+The average standard deviation is 0.03681415872954173
+The number of configurations that gained a higher f_score: 100.0% 

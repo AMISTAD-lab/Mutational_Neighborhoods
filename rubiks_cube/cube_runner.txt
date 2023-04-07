@@ -1,0 +1,36 @@
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: False
+Are we allowing repeats: False
+The standard deviation of standard deviations is 0.015242786749008913
+The average standard deviation is 0.03304650117494103
+The number of configurations that gained a higher f_score: 89.0% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: False
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.026028991862466704
+The average standard deviation is 0.05181490940943374
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: True
+Are we allowing repeats: False
+The standard deviation of standard deviations is 0.023773617388249582
+The average standard deviation is 0.03631888276782026
+The number of configurations that gained a higher f_score: 88.94999999999999% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.020935462850535456
+The average standard deviation is 0.05341261580033602
+The number of configurations that gained a higher f_score: 100.0% 
