@@ -322,8 +322,8 @@ def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits
     
     file = open("n-puzzle.txt", "a")
     file.write("---------------------------------------------\n")
-    file.write("The number of cubes is " + str(num_traps) + "\n")
-    file.write("Getting high cubes by going bacwkwards from solved configuration " + str(artificial_start_traps) + "\n")
+    file.write("The number of puzzle is " + str(num_traps) + "\n")
+    file.write("Getting high puzzle by going bacwkwards from solved configuration " + str(artificial_start_traps) + "\n")
     file.write("The number of splits is " + str(num_splits) + "\n")
     file.write("Solvable Puzzles " + str(use_solvable_puzzles) + "\n")
     file.write("Are we allowing repeats: " + str(allow_repeats) + "\n")
