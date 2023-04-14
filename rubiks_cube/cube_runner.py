@@ -62,13 +62,16 @@ def get_best_f_score_path(initial_configuration = None,  depth = 50, break_at_en
     return f_scores
 
 
-def get_high_f_score_cube(num_swaps):
+def get_high_f_score_cube(num_swaps, solvable=True):
     configuration = cube.RubiksCube()
+    if(not solvable):
+        #we want to swtich the configuration of the twist
+        configuration.cube = [[['w', 'w', 'w'], ['w', 'w', 'w'], ['o', 'w', 'w']], [['o', 'o', 'g'], ['o', 'o', 'o'], ['o', 'o', 'o']], [['w', 'g', 'g'], ['g', 'g', 'g'], ['g', 'g', 'g']], [['r', 'r', 'r'], ['r', 'r', 'r'], ['r', 'r', 'r']], [['b', 'b', 'b'], ['b', 'b', 'b'], ['b', 'b', 'b']], [['y', 'y', 'y'], ['y', 'y', 'y'], ['y', 'y', 'y']]]
     for i in range(num_swaps):
         configuration.do_move(random.randint(0,17))
     return configuration
     
-def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth = 20, plot=True, use_original_f_score=True, allow_repeats=False):
+def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth = 20, plot=True, use_original_f_score=True, allow_repeats=False, solvable=True):
     #if the number of splits are 5, we want to go from 0-0.2, 0.2-0.4, 0.4-0.6, 0.6-0.8, 0.8-1.0
     results = [[] for i in range(num_splits)]
     num_in_each = [0 for i in range(num_splits)]
@@ -82,7 +85,7 @@ def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth
             initial_configuration = cube.RubiksCube()
             initial_configuration.shuffle()
         else:
-            initial_configuration = get_high_f_score_cube(random.randint(0,20))
+            initial_configuration = get_high_f_score_cube(random.randint(0,20), solvable=solvable)
     
         
         if(use_original_f_score): initial_f = initial_configuration.get_f_score_based_on_center()
@@ -90,6 +93,7 @@ def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth
         f_scores = get_best_f_score_path(initial_configuration=initial_configuration,  depth = depth, break_at_end = False, allow_repeats=allow_repeats)
         if(f_scores[-1] >= initial_f or f_scores[-2] >= initial_f): number_of_configurations_that_gained_higher_fscore+=1
         index = min(num_splits - 1, int(initial_f/size_of_split))
+        index = max(index, 0)
         if(results[index] == []):
             results[index] = f_scores
         else:
@@ -116,6 +120,7 @@ def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth
     f.write("The number of splits is " + str(num_splits) + "\n")
     f.write("Are we using the original_f_score: " + str(use_original_f_score) + "\n")
     f.write("Are we allowing repeats: " + str(allow_repeats) + "\n")
+    f.write("Are we using solvable cubes " + str(solvable)+ "\n")
     std_of_std = np.std(variance_of_variances)
     f.write("The standard deviation of standard deviations is " + str(std_of_std) + "\n")
     average_std = np.average(variance_of_variances)
@@ -150,10 +155,11 @@ def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth
 
 
 def run():
-    arr = [False, False, True, True]
-    arr2 = [False, True, False, True]
-    for i in range(4):
-        get_mult_cube_results(2000, plot=False, use_original_f_score=arr[i], allow_repeats=arr2[i])
+    arr = [False, False, True, True, False, False, True, True]
+    arr2 = [False, True, False, True, False, True, False, True]
+    arr3 = [False, False, False, False, True, True, True, True]
+    for i in range(8):
+        get_mult_cube_results(2000, plot=False, use_original_f_score=arr[i], allow_repeats=arr2[i], solvable=arr3[i])
 
 
 run()
