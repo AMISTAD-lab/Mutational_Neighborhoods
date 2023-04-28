@@ -2,6 +2,7 @@ import cube
 import numpy as np
 import matplotlib.pyplot as plt
 import random
+import math
 
 
 def test():
@@ -74,8 +75,14 @@ def get_high_f_score_cube(num_swaps, solvable=True):
 def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth = 20, plot=True, use_original_f_score=True, allow_repeats=False, solvable=True):
     #if the number of splits are 5, we want to go from 0-0.2, 0.2-0.4, 0.4-0.6, 0.6-0.8, 0.8-1.0
     results = [[] for i in range(num_splits)]
+    results_per_depth = [[] for i in range(num_splits)]
+
+    #we will calculate error as the standard deviation / sqrt (measurements)
+    for i in range(num_splits):
+        for j in range(depth):
+            results_per_depth[i] += [[]]
+    
     num_in_each = [0 for i in range(num_splits)]
-    print(results)
 
     size_of_split = 1.0/num_splits
     initial_configuration = None
@@ -98,21 +105,30 @@ def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth
             results[index] = f_scores
         else:
             results[index] = [results[index][i] + f_scores[i] for i in range(depth)]
+        
+        for j in range(depth):
+            results_per_depth[index][j] += [f_scores[j]]
         num_in_each[index] += 1
-    
     
     if plot: plt.figure()
     variance_of_variances = []
     variance_of_variances_x = []
     for i in range(num_splits):
-        if(num_in_each[i] == 0): continue
+        if(num_in_each[i] < 5): continue
         data = results[i]
         data = [data[j]/num_in_each[i] for j in range(depth)]
         label = round(i*size_of_split,2)
-        if plot: plt.plot(data, label=str(label))
+        y_error = []
+        for j in range(depth):
+            standard_deviation = np.std(results_per_depth[i][j])
+            error = standard_deviation/ math.sqrt(num_in_each[i])
+            y_error +=[error]
+        if plot: 
+            plt.errorbar(x=range(depth), y=data, yerr=y_error, label=str(label))
+
         variance_of_variances += [np.std(data)]
         variance_of_variances_x += [label]
-    
+    print(num_in_each)
     f = open("cube_runner.txt", "a")
     f.write("---------------------------------------------\n")
     f.write("The number of cubes is " + str(num_cubes) + "\n")
@@ -135,10 +151,19 @@ def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth
         print(variance_of_variances)
         #plt.show()
         plt.legend(loc="lower right")
-        plt.xlabel('Number of iterations')
+        plt.xlabel('Number of Moves')
         plt.ylabel('F-score')
         #plt.title("Random Transformator: Solvable Puzzles")
-        plt.title("Rubiks Cube: Best-F-score -No Repeats in Configurations")
+        title = "Rubiks Cube: "
+        if(use_original_f_score): title += "Original F-Score, "
+        else: title += "Best F-Score, "
+
+        if(allow_repeats): title += "Allow Repeats, "
+        else: title += "Repeats, "
+
+        if(solvable): title += "Solvable"
+        else: title += "Not Solvable"
+        plt.title(title)
         plt.savefig('./plot0.png') 
 
         #now we will plot the variance over the trap size and see how much it differs
@@ -152,6 +177,7 @@ def get_mult_cube_results(num_cubes, random_cube = False, num_splits = 20, depth
 
 
 
+get_mult_cube_results(2000, plot=True, num_splits=10, allow_repeats=True)
 
 
 def run():
@@ -162,4 +188,4 @@ def run():
         get_mult_cube_results(2000, plot=False, use_original_f_score=arr[i], allow_repeats=arr2[i], solvable=arr3[i])
 
 
-run()
+# run()

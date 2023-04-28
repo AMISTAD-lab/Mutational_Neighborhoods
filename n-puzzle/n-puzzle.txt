@@ -34,3 +34,210 @@ Are we allowing repeats: True
 The standard deviation of standard deviations is 0.01799977319492757
 The average standard deviation is 0.03482606625383348
 The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.013739713566915205
+The average standard deviation is 0.036734578322572965
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.014281971230150767
+The average standard deviation is 0.043434255974769485
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.029227303863428856
+The average standard deviation is 0.04558640457101066
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.012891976082522247
+The average standard deviation is 0.031423594117105894
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.02327651606134178
+The average standard deviation is 0.043413683829956216
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.013296890132123595
+The average standard deviation is 0.034146323531861096
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.017290002037506663
+The average standard deviation is 0.04185241454912668
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.01529633559551945
+The average standard deviation is 0.03802575179667701
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.015598243782298623
+The average standard deviation is 0.04234111289850421
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.030700793856457794
+The average standard deviation is 0.05154623911083031
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.017830407442998228
+The average standard deviation is 0.04548175188945673
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.02890609936160381
+The average standard deviation is 0.04524820956793647
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.017978119614059807
+The average standard deviation is 0.04479408420730841
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.013790705723789659
+The average standard deviation is 0.033537367590011365
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.013836031126797738
+The average standard deviation is 0.04089657840783635
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.012690183020280993
+The average standard deviation is 0.03398934293332428
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.013771911718635203
+The average standard deviation is 0.03691538807582079
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.01009816046469856
+The average standard deviation is 0.038021771982899306
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.009417923969408118
+The average standard deviation is 0.03454687862214624
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.026952737106617383
+The average standard deviation is 0.04957902184141817
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 20
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.016309383929211472
+The average standard deviation is 0.042974586418054204
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 2
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.019542451285292455
+The average standard deviation is 0.05875666725435204
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 2000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 10
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.012204500828550936
+The average standard deviation is 0.033074425297985544
+The number of configurations that gained a higher f_score: 100.0% 

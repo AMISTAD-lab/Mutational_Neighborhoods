@@ -78,3 +78,233 @@ Are we using solvable cubes True
 The standard deviation of standard deviations is 0.025243606942619606
 The average standard deviation is 0.047310716543548556
 The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: True
+Are we allowing repeats: False
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.023852553625415027
+The average standard deviation is 0.0384666394119566
+The number of configurations that gained a higher f_score: 93.5% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: True
+Are we allowing repeats: False
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.014119957955892912
+The average standard deviation is 0.029226421060603785
+The number of configurations that gained a higher f_score: 89.45% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: True
+Are we allowing repeats: False
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.014299545053875666
+The average standard deviation is 0.029111940468818247
+The number of configurations that gained a higher f_score: 89.5% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: True
+Are we allowing repeats: False
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.021969322383808516
+The average standard deviation is 0.0400932763880337
+The number of configurations that gained a higher f_score: 86.0% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: True
+Are we allowing repeats: False
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.02252815279143391
+The average standard deviation is 0.03792122006650481
+The number of configurations that gained a higher f_score: 90.0% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 5
+Are we using the original_f_score: True
+Are we allowing repeats: False
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.02043048581836561
+The average standard deviation is 0.0413317489623193
+The number of configurations that gained a higher f_score: 89.0% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 5
+Are we using the original_f_score: True
+Are we allowing repeats: False
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.02288713429691066
+The average standard deviation is 0.04346354679978126
+The number of configurations that gained a higher f_score: 87.5% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 5
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.02756122360520128
+The average standard deviation is 0.06418550252594217
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 5
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.02894573498150462
+The average standard deviation is 0.06910910545996282
+The number of configurations that gained a higher f_score: 99.9% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 5
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.028835583110839034
+The average standard deviation is 0.06780445935768255
+The number of configurations that gained a higher f_score: 99.85000000000001% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 5
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.02710459836382235
+The average standard deviation is 0.06844025944593475
+The number of configurations that gained a higher f_score: 99.95% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 5
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.027024496191934793
+The average standard deviation is 0.066569811682614
+The number of configurations that gained a higher f_score: 99.95% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 5
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.026505448666839175
+The average standard deviation is 0.0661642147637055
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.023859960950483487
+The average standard deviation is 0.049782020493112
+The number of configurations that gained a higher f_score: 99.9% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 20
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.024015359216462463
+The average standard deviation is 0.05405405707842276
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 10
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.028782399060046607
+The average standard deviation is 0.06298518612542112
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 10
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.027146098468088402
+The average standard deviation is 0.06425548036037505
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 10
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.029264859133069334
+The average standard deviation is 0.058474125048165515
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 10
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.029932650649776082
+The average standard deviation is 0.054414407000068575
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 200
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 10
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.02575941605263969
+The average standard deviation is 0.05971405945902831
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 10
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.028085320923476847
+The average standard deviation is 0.05647812846326849
+The number of configurations that gained a higher f_score: 99.9% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 10
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.02771867150797157
+The average standard deviation is 0.05611700400858484
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of cubes is 2000
+Getting high cubes by chance instead of going bacwkwards from solved cube False
+The number of splits is 10
+Are we using the original_f_score: True
+Are we allowing repeats: True
+Are we using solvable cubes True
+The standard deviation of standard deviations is 0.024897746323030823
+The average standard deviation is 0.06336805682359367
+The number of configurations that gained a higher f_score: 100.0% 

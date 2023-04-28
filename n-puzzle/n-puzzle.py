@@ -4,6 +4,7 @@ from mimetypes import init
 import matplotlib.pyplot as plt
 import numpy as np
 import random
+import math 
 
 class Probability_Tree(object):
     "Generic tree node."
@@ -283,11 +284,19 @@ def get_best_f_score_path(initial_configuration = None, side_length = 3, depth =
 
 
     
-def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits = 20, depth = 20, plot=True, allow_repeats=False, use_solvable_puzzles=True):
+def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits = 20, depth = 20, plot=True, allow_repeats=True, use_solvable_puzzles=True):
     #if the number of splits are 5, we want to go from 0-0.2, 0.2-0.4, 0.4-0.6, 0.6-0.8, 0.8-1.0
     results = [[] for i in range(num_splits)]
     num_in_each = [0 for i in range(num_splits)]
-    print(results)
+
+    results_per_depth = [[] for i in range(num_splits)]
+
+    #we will calculate error as the standard deviation / sqrt (measurements)
+    for i in range(num_splits):
+        for j in range(depth):
+            results_per_depth[i] += [[]]
+    
+    num_in_each = [0 for i in range(num_splits)]
 
     size_of_split = 1.0/num_splits
     initial_configuration = get_configuration(random=True, side_length= 3)
@@ -306,19 +315,32 @@ def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits
                 results[index] = f_scores
             else:
                 results[index] = [results[index][i] + f_scores[i] for i in range(depth)]
+            
+            for j in range(depth):
+                results_per_depth[index][j] += [f_scores[j]]
+
             num_in_each[index] += 1
     
     if plot: plt.figure()
     variance_of_variances = []
     variance_of_variances_x = []
+    print("num each", num_in_each)
     for i in range(num_splits):
-        if(num_in_each[i] == 0): continue
+        if(num_in_each[i] < 5): continue
         data = results[i]
         data = [data[j]/num_in_each[i] for j in range(depth)]
         label = round(i*size_of_split,2)
         variance_of_variances += [np.std(data)]
         variance_of_variances_x += [label]
-        if plot: plt.plot(data, label=str(label))
+        y_error = []
+        for j in range(depth):
+            standard_deviation = np.std(results_per_depth[i][j])
+            error = standard_deviation/ math.sqrt(len(results_per_depth[i][j]))
+            y_error +=[error]
+        if plot: 
+            #plt.plot(data, label=str(label))
+            plt.errorbar(x=range(depth), y=data, yerr=y_error, label=str(label))
+
     
     file = open("n-puzzle.txt", "a")
     file.write("---------------------------------------------\n")
@@ -339,23 +361,17 @@ def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits
     if plot:
         #plt.show()
         plt.legend()
-        plt.xlabel('Number of iterations')
+        plt.xlabel('Number of Moves')
         plt.ylabel('F-score')
-        #plt.title("Random Transformator: Solvable Puzzles")
-        plt.title("Original Transformator: No Repeats in Configurations")
+        title = "N-Puzzle: "
+        if(allow_repeats): title += "Allow Repeats,"
+        else: title += "Repeats,"
+        if(is_solvable): title += "Solvable"
+        else: title += "Not Solvable"
+        plt.title(title)
         plt.savefig('./plot5.png') 
 
 
-def run():
-    arr = [False, False, True, True]
-    arr2 = [False, True, False, True]
-    for i in range(4):
-        get_mult_puzzle_results(2000, artificial_start_traps=True, allow_repeats=arr[i], use_solvable_puzzles=arr2[i], plot=False)
-        print("Done")
-
-
-
-    
 
 def two_gram_recursive(initial_configuration = None):
     # 1 2
@@ -386,9 +402,20 @@ def two_gram_recursive(initial_configuration = None):
     plt.title("8-puzzle: Graph of F-score for Multiple Paths")
     plt.savefig("trips2.png")
 
+def run():
+    arr = [False, False, True, True]
+    arr2 = [False, True, False, True]
+    for i in range(4):
+        get_mult_puzzle_results(2000, artificial_start_traps=True, allow_repeats=arr[i], use_solvable_puzzles=arr2[i], plot=False)
+        print("Done")
+
 
 
     
+
+get_mult_puzzle_results(2000, plot=True,num_splits=10)
+
+
     #we can only move 0, and we want to see the probability tree of the configuration
 
 
@@ -410,4 +437,4 @@ def two_gram_recursive(initial_configuration = None):
 
 # print(is_solvable(solvable_configuration))
 
-run()
+# run()
