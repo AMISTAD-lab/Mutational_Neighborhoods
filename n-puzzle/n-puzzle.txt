@@ -241,3 +241,39 @@ Are we allowing repeats: True
 The standard deviation of standard deviations is 0.012204500828550936
 The average standard deviation is 0.033074425297985544
 The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 20000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 10
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.01289644568608843
+The average standard deviation is 0.036987530810888555
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 20000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 10
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.013457296547338871
+The average standard deviation is 0.03792151712954433
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 20000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 10
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.012212228628927032
+The average standard deviation is 0.03759898725004336
+The number of configurations that gained a higher f_score: 100.0% 
+---------------------------------------------
+The number of puzzle is 20000
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 10
+Solvable Puzzles True
+Are we allowing repeats: False
+The standard deviation of standard deviations is 0.03023896885272465
+The average standard deviation is 0.053555166004677184
+The number of configurations that gained a higher f_score: 89.36500000000001% 

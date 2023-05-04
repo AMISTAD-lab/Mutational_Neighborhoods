@@ -335,7 +335,7 @@ def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits
         y_error = []
         for j in range(depth):
             standard_deviation = np.std(results_per_depth[i][j])
-            error = standard_deviation/ math.sqrt(len(results_per_depth[i][j]))
+            error = standard_deviation# / math.sqrt(len(results_per_depth[i][j]))
             y_error +=[error]
         if plot: 
             #plt.plot(data, label=str(label))
@@ -364,6 +364,7 @@ def get_mult_puzzle_results(num_traps, artificial_start_traps = True, num_splits
         plt.xlabel('Number of Moves')
         plt.ylabel('F-score')
         title = "N-Puzzle: "
+        title += str(num_traps) + " "
         if(allow_repeats): title += "Allow Repeats,"
         else: title += "Repeats,"
         if(is_solvable): title += "Solvable"
@@ -413,7 +414,7 @@ def run():
 
     
 
-get_mult_puzzle_results(2000, plot=True,num_splits=10)
+get_mult_puzzle_results(20000, plot=True,num_splits=10, allow_repeats=False)
 
 
     #we can only move 0, and we want to see the probability tree of the configuration
