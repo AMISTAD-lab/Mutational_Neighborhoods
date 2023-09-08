@@ -313,3 +313,12 @@ Are we allowing repeats: True
 The standard deviation of standard deviations is 0.01327094990203981
 The average standard deviation is 0.039142130731186074
 The number of configurations that gained a higher f_score: 721.5% 
+---------------------------------------------
+The number of puzzle is 50
+Getting high puzzle by going bacwkwards from solved configuration True
+The number of splits is 15
+Solvable Puzzles True
+Are we allowing repeats: True
+The standard deviation of standard deviations is 0.01422791677244889
+The average standard deviation is 0.042950032284099104
+The number of configurations that gained a higher f_score: 455.99999999999994% 

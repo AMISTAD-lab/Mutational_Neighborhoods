@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import random
 import math 
-import timeit
+import time
 
 
 class Probability_Tree(object):
@@ -286,7 +286,7 @@ def get_best_f_score_path(initial_configuration = None, side_length = 3, depth =
 
 
     
-def get_mult_puzzle_results(num_traps, max_iterations = 100000, artificial_start_traps = True, num_splits = 20, depth = 20, plot=True, allow_repeats=True, use_solvable_puzzles=True):
+def get_mult_puzzle_results(num_puzzles, max_iterations = 100000, artificial_start_traps = True, num_splits = 20, depth = 20, plot=True, allow_repeats=True, use_solvable_puzzles=True):
     #if the number of splits are 5, we want to go from 0-0.2, 0.2-0.4, 0.4-0.6, 0.6-0.8, 0.8-1.0
     results = [[] for i in range(num_splits)]
     num_in_each = [0 for i in range(num_splits)]
@@ -304,19 +304,19 @@ def get_mult_puzzle_results(num_traps, max_iterations = 100000, artificial_start
     initial_configuration = get_configuration(random=True, side_length= 3)
     desired_configuration = get_configuration(random=False, side_length=3)
     number_of_configurations_that_gained_higher_fscore = 0
-    num_traps_used = 0
+    num_puzzles_used = 0
     
     for i in range(max_iterations):
         if(artificial_start_traps):
-            if(num_traps_used >= num_traps * num_splits): break
+            if(num_puzzles_used >= num_puzzles * num_splits): break
             #initial_configuration = get_high_f_score_configuration_using_original_transformer(random.randint(0,20), desired_configuration)
             initial_configuration = get_solvable_configuration(random.randint(10,30), desired_configuration, solvable=use_solvable_puzzles)
             initial_f = f(initial_configuration, desired_configuration)
 
             index = min(num_splits - 1, int(initial_f/size_of_split))
 
-            if(num_in_each[index] >= num_traps): continue 
-            num_traps_used += 1
+            if(num_in_each[index] >= num_puzzles): continue 
+            num_puzzles_used += 1
             f_scores = get_best_f_score_path(initial_configuration, side_length = 3, depth = depth, 
                                              break_at_end = False, plot=False, allow_repeats=allow_repeats)
             if(f_scores[-1] >= initial_f or f_scores[-2] >= initial_f): number_of_configurations_that_gained_higher_fscore+=1
@@ -335,7 +335,7 @@ def get_mult_puzzle_results(num_traps, max_iterations = 100000, artificial_start
     variance_of_variances_x = []
     print("num each", num_in_each)
     for i in range(num_splits):
-        if(num_in_each[i] < num_traps): continue
+        if(num_in_each[i] < num_puzzles): continue
         data = results[i]
         data = [data[j]/num_in_each[i] for j in range(depth)]
         label = round(i*size_of_split,2)
@@ -353,7 +353,7 @@ def get_mult_puzzle_results(num_traps, max_iterations = 100000, artificial_start
     
     file = open("n-puzzle.txt", "a")
     file.write("---------------------------------------------\n")
-    file.write("The number of puzzle is " + str(num_traps) + "\n")
+    file.write("The number of puzzle is " + str(num_puzzles) + "\n")
     file.write("Getting high puzzle by going bacwkwards from solved configuration " + str(artificial_start_traps) + "\n")
     file.write("The number of splits is " + str(num_splits) + "\n")
     file.write("Solvable Puzzles " + str(use_solvable_puzzles) + "\n")
@@ -362,7 +362,7 @@ def get_mult_puzzle_results(num_traps, max_iterations = 100000, artificial_start
     file.write("The standard deviation of standard deviations is " + str(std_of_std) + "\n")
     average_std = np.average(variance_of_variances)
     file.write("The average standard deviation is " + str(average_std) + "\n")
-    percent_gained_higher_f = (number_of_configurations_that_gained_higher_fscore/num_traps) * 100
+    percent_gained_higher_f = (number_of_configurations_that_gained_higher_fscore/num_puzzles) * 100
     file.write("The number of configurations that gained a higher f_score: " + str(percent_gained_higher_f) + "% \n")
     file.write("")
     file.close()
@@ -373,7 +373,7 @@ def get_mult_puzzle_results(num_traps, max_iterations = 100000, artificial_start
         plt.xlabel('Number of Moves')
         plt.ylabel('F-score')
         title = "N-Puzzle: "
-        title += str(num_traps) + " Starting Puzzles, "
+        title += str(num_puzzles) + " Starting Puzzles, "
         if(allow_repeats): title += "Allowing Repeats, "
         else: title += "No Repeats, "
         if(is_solvable): title += "Solvable"
@@ -386,7 +386,7 @@ def get_mult_puzzle_results(num_traps, max_iterations = 100000, artificial_start
 
 
     
-def explore_one_split(num_traps, num_plotted, max_iterations = 100000,  num_splits = 20, which_split = 0, depth = 20,  allow_repeats=True, use_solvable_puzzles=True):
+def explore_one_split(num_puzzles, num_plotted, max_iterations = 100000,  num_splits = 20, which_split = 0, depth = 20,  allow_repeats=True, use_solvable_puzzles=True):
     #if the number of splits are 5, we want to go from 0-0.2, 0.2-0.4, 0.4-0.6, 0.6-0.8, 0.8-1.0
     num_in_split = 0
     results_per_depth = [[] for i in range(depth)]
@@ -395,10 +395,10 @@ def explore_one_split(num_traps, num_plotted, max_iterations = 100000,  num_spli
     initial_configuration = get_configuration(random=True, side_length= 3)
     desired_configuration = get_configuration(random=False, side_length=3)
     number_of_configurations_that_gained_higher_fscore = 0
-    num_traps_used = 0
+    num_puzzles_used = 0
     
     for i in range(max_iterations):
-        if(num_traps_used >= num_traps): break
+        if(num_puzzles_used >= num_puzzles): break
         #initial_configuration = get_high_f_score_configuration_using_original_transformer(random.randint(0,20), desired_configuration)
         initial_configuration = get_solvable_configuration(random.randint(10,30), desired_configuration, solvable=use_solvable_puzzles)
         initial_f = f(initial_configuration, desired_configuration)
@@ -406,7 +406,7 @@ def explore_one_split(num_traps, num_plotted, max_iterations = 100000,  num_spli
         index = min(num_splits - 1, int(initial_f/size_of_split))
 
         if(index != which_split): continue 
-        num_traps_used += 1
+        num_puzzles_used += 1
         f_scores = get_best_f_score_path(initial_configuration, side_length = 3, depth = depth, 
                                             break_at_end = False, plot=False, allow_repeats=allow_repeats)
         if(f_scores[-1] >= initial_f or f_scores[-2] >= initial_f): number_of_configurations_that_gained_higher_fscore+=1
@@ -427,7 +427,7 @@ def explore_one_split(num_traps, num_plotted, max_iterations = 100000,  num_spli
 
     # we plot the average 
     print("num each", num_in_split)
-    if (num_in_split < num_traps): 
+    if (num_in_split < num_puzzles): 
         print("Expected Value not achieved")
     #data = [data[j]/num_in_split for j in range(depth)]
     y_error = []
@@ -498,12 +498,12 @@ def run():
     
 
 
-start = timeit.timeit()
-explore_one_split(1000000, 1000, max_iterations = 10000000,  num_splits = 15, which_split = 3, depth = 20,  allow_repeats=True)
-end = timeit.timeit()
-print(end-start)
+start = time.time()
+explore_one_split(1000000, 1000, max_iterations = 10000000,  num_splits = 15, which_split = 8, depth = 20,  allow_repeats=True)
+end = time.time()
+print(end-start +  "seconds")
 
-#get_mult_puzzle_results(num_traps=400, max_iterations=10**6,  plot=True,num_splits=15, allow_repeats=True)
+# get_mult_puzzle_results(num_puzzles=50, max_iterations=10**3,  plot=True,num_splits=15, allow_repeats=True)
 
 
     #we can only move 0, and we want to see the probability tree of the configuration
